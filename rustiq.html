@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rustiq Handmade Art Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #4D3726;
+        }
+        header, h1, h2, h3 {
+            font-family: 'Bebas Neue', cursive;
+        }
+        header {
+            background-color: #fff;
+            color: #8F7563;
+            padding: 1rem;
+            text-align: center;
+        }
+        header img {
+            max-width: 400px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #4D3726;
+            padding: 0.5rem;
+        }
+        nav a {
+            color: #D9C5B2;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #4D3726;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #D9C5B2;
+            display: block;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+        .menu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .openbtn {
+            font-size: 20px;
+            background-color: #D9C5B2;
+            color: #4D3726;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin-top: 10px;
+        }
+        .section {
+            display: none;
+            padding: 2rem;
+        }
+        .section.active {
+            display: block;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            background: #4D3726;
+            color: #fff;
+            padding: 1rem;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Button -->
+    <button class="openbtn" onclick="openNav()">☰ </button>
+
+    <!-- Sliding Menu -->
+    <div id="myMenu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('canvas')">Canvas Paintings</a>
+        <a onclick="showSection('pottery')">Pottery Paintings</a>
+        <a onclick="showSection('customized')">Customized Items</a>
+        <a onclick="showSection('contact')">Contact</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <img src="https://assets.onecompiler.app/42ydd42cy/42ydbg3an/rustiq%20.jpg" alt="Rustiq Logo">
+        <h1>Welcome to Rustiq Handmade Art Gallery</h1>
+        <p>Explore and Buy Beautiful Handcrafted Artworks</p>
+    </header>
+
+    <!-- Sections -->
+    <div id="home" class="section active">
+        <h2>About Rustiq</h2>
+        <p>Welcome to Rustiq! We are a passionate team dedicated to bringing art to life through handmade creations. At Rustiq, we specialize in crafting beautiful handmade paintings, unique cushions, and customized designs on pottery of all shapes and sizes, including mud lamps and vases. Our mission is to add a touch of elegance and personality to your spaces with artistic pieces that reflect your style. Whether you’re looking for a bespoke design for a special occasion or a stunning piece to brighten your home, we’re here to turn your vision into reality. Explore our collection or share your ideas with us to create something truly special!</p>
+    </div>
+
+    <div id="canvas" class="section">
+        <h2>Canvas Paintings</h2>
+        <div class="gallery">
+            <img src="canvas1.jpg" alt="Canvas Painting 1">
+            <img src="canvas2.jpg" alt="Canvas Painting 2">
+            <img src="canvas3.jpg" alt="Canvas Painting 3">
+        </div>
+    </div>
+
+    <div id="pottery" class="section">
+        <h2>Pottery Paintings</h2>
+        <div class="gallery">
+            <img src="pottery1.jpg" alt="Pottery Painting 1">
+            <img src="pottery2.jpg" alt="Pottery Painting 2">
+            <img src="pottery3.jpg" alt="Pottery Painting 3">
+        </div>
+    </div>
+
+    <div id="customized" class="section">
+        <h2>Customized Items</h2>
+        <div class="gallery">
+            <img src="custom1.jpg" alt="Customized Item 1">
+            <img src="custom2.jpg" alt="Customized Item 2">
+            <img src="custom3.jpg" alt="Customized Item 3">
+        </div>
+    </div>
+
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
+        <p>Instagram: <a href="https://instagram.com/yourprofile" target="_blank">Follow us</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact me at <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
+        <p>Follow me on <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a></p>
+        <p>DELIVERY INSTRUCTIONS: 
+
+            We currently deliver to specific areas, ensuring your handmade items reach you with care. For detailed delivery locations and arrangements, feel free to contact us. You can easily reach out through WhatsApp or email for inquiries, custom orders, or any assistance. We’re here to make the process smooth and hassle-free!</p>
+    </footer>
+
+    <!-- JavaScript for Sliding Menu and Section Navigation -->
+    <script>
+        function openNav() {
+            document.getElementById("myMenu").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("myMenu").style.width = "0";
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

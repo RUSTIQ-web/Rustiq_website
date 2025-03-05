@@ -142,12 +142,22 @@
 
     <script>
         function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
+        document.getElementById("myMenu").style.width = "250px";
+    }
 
+    function closeNav() {
+        document.getElementById("myMenu").style.width = "0";
+    }
+
+    // Close menu when any menu item is clicked
+    document.addEventListener("DOMContentLoaded", function() {
+        let menuLinks = document.querySelectorAll(".menu a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                closeNav(); // Closes the menu on click
+            });
+        });
+    });
         function showGallery() {
             // Hide other sections and show the gallery
             document.getElementById("about").style.display = "none";
@@ -159,5 +169,6 @@
             window.location.href = `gallery.html?image=${imageSrc}`;
         }
     </script>
+
 </body>
 </html>

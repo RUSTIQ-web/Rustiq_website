@@ -66,115 +66,63 @@
 <body>
 
    <div class="image-container">
-    <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
-    <img id="mainImage" src="" alt="Gallery Image">
-    <button class="nav-button next" onclick="nextImage()">&#10095;</button>
-</div>
-
-<h2 id="imageName">Image description goes here...</h2>
-
-<!-- Price Box -->
-<div style="display: flex; justify-content: center; margin-top: 10px;">
-    <div id="priceBox" style="background-color: #f5e8dc; 
-                color: #4D3726; 
-                padding: 15px; 
-                border: 2px solid #4D3726; 
-                border-radius: 8px; 
-                text-align: center; 
-                font-size: 20px; 
-                font-weight: bold; 
-                width: 150px;">
-        Price: Loading...
+        <img id="mainImage" src="" alt="Gallery Image">
     </div>
-</div>
 
-<!-- Details Section -->
-<div id="detailsBox" style="background-color: #D9C5B2;
-            padding: 15px; 
-            border-radius: 8px; 
-            margin-top: 10px;">
-    <h3 style="color: #4D3726; text-align: center;">Details</h3>
-    <p>Loading...</p>
-</div>
+    <h2 id="imageName">Image description goes here...</h2>
 
+    <!-- Price Box -->
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <div id="priceBox" style="background-color: #f5e8dc; color: #4D3726; padding: 15px; border: 2px solid #4D3726; border-radius: 8px; text-align: center; font-size: 20px; font-weight: bold; width: 150px;">
+            Price: Loading...
+        </div>
+    </div>
 
-    <!-- WhatsApp Contact Button -->
-<a href="https://wa.me/923361833557" target="_blank" style="display: inline-block; padding: 10px 15px; background-color: #4D3726; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; margin-top: 10px; display: block; text-align: center;">
-   CLICK to place order via whatsapp
-</a>
+    <!-- Details Section -->
+    <div id="detailsBox" style="background-color: #D9C5B2; padding: 15px; border-radius: 8px; margin-top: 10px;">
+        <h3 style="color: #4D3726; text-align: center;">Details</h3>
+        <p id="productDetails">Loading...</p>
+    </div>
 
+    <a href="https://wa.me/923361833557" target="_blank" style="display: inline-block; padding: 10px 15px; background-color: #4D3726; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; margin-top: 10px; display: block; text-align: center;">
+        CLICK to place order via WhatsApp
+    </a>
 
- <a href="javascript:history.back()" class="back-button">⬅ Back to Gallery</a>
+    <a href="javascript:history.back()" class="back-button">⬅ Back to Gallery</a>
 
-<style>
-    .back-button {
-        display: inline-block;
-        padding: 10px 15px;
-        background-color: #8F7563; /* Same color as "Rustiq" on homepage */
-        color: white; /* White text for contrast */
-        text-decoration: none; /* Remove underline */
-        border-radius: 5px; /* Rounded corners */
-        font-size: 16px;
-        font-weight: bold;
-        margin: 10px 0;
-        transition: background-color 0.3s;
-    }
-    
-    .back-button:hover {
-        background-color: #4D3726; /* Darker shade on hover */
-    }
-</style>
-<script>
-    const productData = {
-        "b&w 1.jpg": {
-            name: "Black & White Pot",
-            price: "PKR 2,500",
-            details: "- Material: High-quality ceramic<br>- Hand-painted unique design<br>- Elegant monochrome look"
-        },
-        "black 1.jpg": {
-            name: "Black Glossy Vase",
-            price: "PKR 3,000",
-            details: "- Material: Premium ceramic<br>- Glossy black finish<br>- Perfect for modern decor"
-        },
-        "multi 1.jpg": {
-            name: "Multicolor Art Pot",
-            price: "PKR 3,200",
-            details: "- Handcrafted multicolor pattern<br>- Acrylic paint finish<br>- Ideal for vibrant home decor"
-        },
-        "pottery2.jpg": {
-            name: "Rustic Clay Vase",
-            price: "PKR 2,800",
-            details: "- Traditional pottery design<br>- Earthy tones and textures<br>- Handmade & eco-friendly"
-        }
-    };
+    <script>
+        const productData = {
+            "bw1.jpg": { name: "Black & White Pot", price: "PKR 2,500", details: "- Material: High-quality ceramic<br>- Hand-painted unique design<br>- Elegant monochrome look" },
+            "black1.jpg": { name: "Black Glossy Vase", price: "PKR 3,000", details: "- Material: Premium ceramic<br>- Glossy black finish<br>- Perfect for modern decor" },
+            "multi1.jpg": { name: "Multicolor Art Pot", price: "PKR 3,200", details: "- Handcrafted multicolor pattern<br>- Acrylic paint finish<br>- Ideal for vibrant home decor" },
+            "pottery2.jpg": { name: "Rustic Clay Vase", price: "PKR 2,800", details: "- Traditional pottery design<br>- Earthy tones and textures<br>- Handmade & eco-friendly" }
+        };
 
-    function getImageDetails() {
-        const params = new URLSearchParams(window.location.search);
-        let imageSrc = params.get('image'); 
+        function getImageDetails() {
+            const params = new URLSearchParams(window.location.search);
+            let imageSrc = params.get('image'); 
 
-        if (!imageSrc) {
-            console.error("No image parameter found in URL!");
-            return;
+            if (!imageSrc) {
+                console.error("No image parameter found in URL!");
+                return;
+            }
+
+            imageSrc = decodeURIComponent(imageSrc).trim().replace(/\s/g, "");
+            console.log("Fetching details for:", imageSrc);
+
+            if (productData[imageSrc]) {
+                document.getElementById("mainImage").src = "images/" + imageSrc;
+                document.getElementById("imageName").innerHTML = productData[imageSrc].name;
+                document.getElementById("priceBox").innerHTML = "Price: " + productData[imageSrc].price;
+                document.getElementById("productDetails").innerHTML = productData[imageSrc].details;
+            } else {
+                document.getElementById("imageName").innerHTML = "Product Not Found";
+                document.getElementById("priceBox").innerHTML = "N/A";
+                document.getElementById("productDetails").innerHTML = "Details not available.";
+            }
         }
 
-        imageSrc = decodeURIComponent(imageSrc).trim(); // Fix encoding issues
-
-        console.log("Fetching details for:", imageSrc); // Debugging output
-
-        if (productData[imageSrc]) {
-            document.getElementById("mainImage").src = imageSrc;
-            document.getElementById("imageName").innerHTML = productData[imageSrc].name;
-            document.getElementById("priceBox").innerHTML = "Price: " + productData[imageSrc].price;
-            document.getElementById("detailsBox").innerHTML = productData[imageSrc].details;
-        } else {
-            document.getElementById("imageName").innerHTML = "Product Not Found";
-            document.getElementById("priceBox").innerHTML = "N/A";
-            document.getElementById("detailsBox").innerHTML = "Details not available.";
-        }
-    }
-
-    window.onload = getImageDetails;
-</script>
-
+        window.onload = getImageDetails;
+    </script>
 </body>
 </html>

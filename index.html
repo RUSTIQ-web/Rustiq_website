@@ -169,33 +169,42 @@
             document.getElementById("contact").style.display = "none";
             document.getElementById("gallery").style.display = "grid";
         }
+
     function openGalleryPage(category) {
         let imageSets = {
             "b&w1": {
                 images: ["b&w 1.jpg", "b&w 2.jpg", "b&w 3.jpg"],
-                name: "Black & White Pot",
-                description: "A beautiful handcrafted black and white pot."
+                name: "Black & White Pot 1",
+                description: "A beautiful handcrafted black and white pot.",
+                price: "PKR 2,500",
+                details: "- Material: High-quality ceramic<br>- Hand-painted with unique designs<br>- Perfect for home decor"
             },
             "black1": {
                 images: ["black 1.jpg", "black 2.jpg", "black 3.jpg"],
                 name: "Black Pot 1",
-                description: "Elegant black ceramic pot, hand-painted."
+                description: "Elegant black ceramic pot, hand-painted.",
+                price: "PKR 3,000",
+                details: "- Made with premium ceramic<br>- Glossy black finish<br>- Ideal for modern decor"
             },
             "multi1": {
-                images: ["multi 1.jpg", "multi 2.jpg"],
+                images: ["multi 1.jpg", "multi 2.jpg", "multi 3.jpg"],
                 name: "Multicolor Pot 1",
-                description: "Vibrant multicolor pottery with artistic designs."
+                description: "Vibrant multicolor pottery with artistic designs.",
+                price: "PKR 2,800",
+                details: "- Handcrafted multicolor pot<br>- Unique abstract patterns<br>- Limited edition piece"
             },
             "pottery2": {
                 images: ["pottery2.jpg", "pottery3.jpg", "pottery4.jpg"],
                 name: "Handmade Pottery 2",
-                description: "A beautiful pottery collection made with love."
+                description: "A beautiful pottery collection made with love.",
+                price: "PKR 3,500",
+                details: "- Hand-thrown pottery<br>- Traditional artistic touch<br>- Perfect for rustic decor"
             }
         };
 
         let data = imageSets[category];
         if (data) {
-            let url = `gallery.html?images=${data.images.join(",")}&name=${encodeURIComponent(data.name)}&desc=${encodeURIComponent(data.description)}`;
+            let url = `gallery.html?images=${data.images.join(",")}&name=${encodeURIComponent(data.name)}&desc=${encodeURIComponent(data.description)}&price=${encodeURIComponent(data.price)}&details=${encodeURIComponent(data.details)}`;
             window.location.href = url;
         }
     }

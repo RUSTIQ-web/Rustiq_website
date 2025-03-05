@@ -20,72 +20,67 @@
             text-align: center;
             padding: 1rem;
         }
-        .image-container {
-            margin-top: 20px;
+        header img {
+            max-width: 300px;
         }
-        .image-container img {
-            max-width: 80%;
+        .gallery-container {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 800px;
+        }
+        .main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
             border-radius: 8px;
         }
-        .thumbnails {
+        .thumbnail-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 10px;
         }
-        .thumbnails img {
+        .thumbnail {
             width: 100px;
-            height: auto;
-            border-radius: 5px;
+            height: 100px;
+            object-fit: cover;
             cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #4D3726;
-            color: white;
-            margin-top: 20px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <header>
+        <img src="rustiq .jpg" alt="Rustiq Logo">
         <h1>Gallery</h1>
     </header>
-    
-    <div class="image-container">
-        <img id="mainImage" src="" alt="Selected Artwork">
+    <div class="gallery-container">
+        <img id="mainImage" class="main-image" src="" alt="Selected Artwork">
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="canvas1.jpg" alt="Canvas 1" onclick="changeImage('canvas1.jpg')">
+            <img class="thumbnail" src="canvas2.jpg" alt="Canvas 2" onclick="changeImage('canvas2.jpg')">
+            <img class="thumbnail" src="pottery1.jpg" alt="Pottery 1" onclick="changeImage('pottery1.jpg')">
+            <img class="thumbnail" src="pottery2.jpg" alt="Pottery 2" onclick="changeImage('pottery2.jpg')">
+        </div>
     </div>
-    
-    <div class="thumbnails">
-        <img src="canvas1.jpg" onclick="changeImage('canvas1.jpg')">
-        <img src="canvas2.jpg" onclick="changeImage('canvas2.jpg')">
-        <img src="pottery1.jpg" onclick="changeImage('pottery1.jpg')">
-        <img src="pottery2.jpg" onclick="changeImage('pottery2.jpg')">
-    </div>
-    
-    <footer>
-        <p>Contact me at <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
-    </footer>
-
     <script>
         function getQueryParam(param) {
-            let urlParams = new URLSearchParams(window.location.search);
+            const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
         
         function changeImage(imageSrc) {
-            document.getElementById("mainImage").src = imageSrc;
+            document.getElementById('mainImage').src = imageSrc;
         }
         
-        document.addEventListener("DOMContentLoaded", function () {
-            let imageSrc = getQueryParam("image");
-            if (imageSrc) {
-                document.getElementById("mainImage").src = imageSrc;
+        window.onload = function() {
+            let image = getQueryParam('image');
+            if (image) {
+                changeImage(image);
             } else {
-                document.getElementById("mainImage").src = "canvas1.jpg"; // Default image
+                changeImage('canvas1.jpg');
             }
-        });
+        };
     </script>
 </body>
 </html>

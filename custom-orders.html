@@ -19,30 +19,36 @@
             color: #8F7563;
             padding: 1rem;
         }
-        header h1 {
+        h1 {
             font-family: 'Bebas Neue', cursive;
-            font-size: 36px;
+            font-size: 2.5rem;
         }
-        .content {
+        p {
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: #F5ECE3;
-            border-radius: 10px;
-            border: 2px solid #8F7563;
+            margin: 0 auto 1.5rem;
         }
         .whatsapp-link {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
             background-color: #4D3726;
             color: white;
+            padding: 10px 20px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.2rem;
             border-radius: 5px;
+            margin-bottom: 2rem;
         }
-        .whatsapp-link:hover {
-            background-color: #8F7563;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -50,10 +56,17 @@
     <header>
         <h1>YOUR VISION, OUR ART</h1>
     </header>
-    <div class="content">
-        <p>At Rustiq, we bring your artistic visions to life. We offer custom hand-painted vases and pottery tailored to your preferences. You can provide your own design ideas, color schemes, and themes, and we will craft a unique masterpiece just for you. Our artists use high-quality imported acrylics for a durable and glossy finish, ensuring that your custom piece is both stunning and long-lasting.</p>
-        <p>To place a custom order or inquire about your personalized design, contact us on WhatsApp.</p>
-        <a href="https://wa.me/yourwhatsapplink" class="whatsapp-link">Order on WhatsApp</a>
+
+    <p>We bring your creativity to life! You can provide your own designs, and we will hand-paint them onto our vases with high-quality imported acrylics for a stunning and durable finish.</p>
+
+    <a href="https://wa.me/yourwhatsapplink" class="whatsapp-link">Place Your Custom Order on WhatsApp</a>
+
+    <h2>Here are our customized pots</h2>
+    <div class="gallery">
+        <img src="custom1.jpg" alt="Customized Pot 1">
+        <img src="custom2.jpg" alt="Customized Pot 2">
+        <img src="custom3.jpg" alt="Customized Pot 3">
+        <img src="custom4.jpg" alt="Customized Pot 4">
     </div>
 </body>
 </html>

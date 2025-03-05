@@ -129,12 +129,23 @@
     </div>
 
     <!-- Gallery Section (Hidden Initially) -->
-    <div id="gallery" class="gallery">
-        <img src="b&w 1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
-        <img src="black 1.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
-        <img src="multi 1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
-        <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
-    </div>
+  <script>
+    const images = [
+        "b&w 4.jpg.jpeg",
+        "b&w 5.jpg.jpeg",
+        "b&w 3.jpg",
+        "black 2.jpg",
+        "black 3.jpg",
+        "multi 2.jpg"
+    ];
+
+    function openGalleryPage(imageSrc) {
+        const index = images.indexOf(imageSrc);
+        if (index !== -1) {
+            window.location.href = `gallery.html?images=${encodeURIComponent(images.join(','))}&index=${index}`;
+        }
+    }
+</script>
 
     <!-- Footer -->
     <footer>

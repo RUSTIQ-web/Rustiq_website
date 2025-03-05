@@ -65,25 +65,38 @@
 </head>
 <body>
 
-    <div class="image-container">
-        <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
-       <img id="mainImage" src="" alt="Gallery Image">
-        <button class="nav-button next" onclick="nextImage()">&#10095;</button>
-    </div>
-    
-    <p class="description" id="imageDescription">Image description goes here...</p>
-  <!-- Product Name -->
-<h2 id="imageName" style="color: #4D3726; text-align: center;">Loading...</h2>
+   <div class="image-container">
+    <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
+    <img id="mainImage" src="" alt="Gallery Image">
+    <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+</div>
+
+<h2 id="imageName">Image description goes here...</h2>
 
 <!-- Price Box -->
-<div id="priceBox" style="background-color: #f5e8dc; color: #4D3726; padding: 15px; border: 2px solid #4D3726; border-radius: 8px; text-align: center; font-size: 20px; font-weight: bold; width: 150px; margin: auto;">
-    Loading price...
+<div style="display: flex; justify-content: center; margin-top: 10px;">
+    <div id="priceBox" style="background-color: #f5e8dc; 
+                color: #4D3726; 
+                padding: 15px; 
+                border: 2px solid #4D3726; 
+                border-radius: 8px; 
+                text-align: center; 
+                font-size: 20px; 
+                font-weight: bold; 
+                width: 150px;">
+        Price: Loading...
+    </div>
 </div>
 
 <!-- Details Section -->
-<div id="detailsBox" style="background-color: #D9C5B2; padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center;">
-    Loading details...
+<div id="detailsBox" style="background-color: #D9C5B2;
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-top: 10px;">
+    <h3 style="color: #4D3726; text-align: center;">Details</h3>
+    <p>Loading...</p>
 </div>
+
 
     <!-- WhatsApp Contact Button -->
 <a href="https://wa.me/923361833557" target="_blank" style="display: inline-block; padding: 10px 15px; background-color: #4D3726; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; margin-top: 10px; display: block; text-align: center;">
@@ -112,7 +125,6 @@
     }
 </style>
 <script>
-    // Define prices and details for each product
     const productData = {
         "b&w 1.jpg": {
             name: "Black & White Pot",
@@ -138,9 +150,18 @@
 
     function getImageDetails() {
         const params = new URLSearchParams(window.location.search);
-        const imageSrc = params.get('image');
+        let imageSrc = params.get('image'); 
 
-        if (imageSrc && productData[imageSrc]) {
+        if (!imageSrc) {
+            console.error("No image parameter found in URL!");
+            return;
+        }
+
+        imageSrc = decodeURIComponent(imageSrc).trim(); // Fix encoding issues
+
+        console.log("Fetching details for:", imageSrc); // Debugging output
+
+        if (productData[imageSrc]) {
             document.getElementById("mainImage").src = imageSrc;
             document.getElementById("imageName").innerHTML = productData[imageSrc].name;
             document.getElementById("priceBox").innerHTML = "Price: " + productData[imageSrc].price;
@@ -154,5 +175,6 @@
 
     window.onload = getImageDetails;
 </script>
+
 </body>
 </html>

@@ -67,7 +67,12 @@
 
     <div class="image-container">
         <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
-        <img id="mainImage" src="" alt="Gallery Image">
+        <img id="b&w 1.jpg" src="b&w 4.jpg.jpeg" alt="Gallery Image">
+        <img id="b&w 1.jpg" src="b&w 5.jpg.jpeg" alt="Gallery Image">
+        <img id="b&w 1.jpg" src="b&w 3.jpg" alt="Gallery Image">
+        <img id="black 1.jpg" src="black 2.jpg" alt="Gallery Image">
+        <img id="black 1.jpg" src="black 3.jpg" alt="Gallery Image">
+         <img id="multi 1.jpg" src="multi 2.jpg" alt="Gallery Image">
         <button class="nav-button next" onclick="nextImage()">&#10095;</button>
     </div>
     
@@ -126,40 +131,42 @@
 
 
 
-<script>
-    let images = [];
-    let currentIndex = 0;
+    <script>
+        let images = [];
+        let currentIndex = 0;
 
-    function getImages() {
-        const params = new URLSearchParams(window.location.search);
-        images = params.get('images').split(',');
-        currentIndex = parseInt(params.get('index'), 10);
+        function getImages() {
+            const params = new URLSearchParams(window.location.search);
+            images = params.get('images').split(',');
+            currentIndex = parseInt(params.get('index'), 10);
 
-        updateImage();
-    }
-
-    function updateImage() {
-        document.getElementById("mainImage").src = decodeURIComponent(images[currentIndex]);
-        document.getElementById("imageDescription").textContent = `Image ${currentIndex + 1} of ${images.length}`;
-    }
-
-    function prevImage() {
-        if (currentIndex > 0) {
-            currentIndex--;
+            // Fix for GitHub Pages: Ensure full URL paths
+            images = images.map(img => img.startsWith('http') ? img : https://raw.githubusercontent.com/YourUsername/YourRepo/main/${img});
+            
             updateImage();
         }
-    }
 
-    function nextImage() {
-        if (currentIndex < images.length - 1) {
-            currentIndex++;
-            updateImage();
+        function updateImage() {
+            document.getElementById("mainImage").src = images[currentIndex];
+            document.getElementById("imageDescription").textContent = Image ${currentIndex + 1} of ${images.length};
         }
-    }
 
-    window.onload = getImages;
-</script>
+        function prevImage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateImage();
+            }
+        }
 
+        function nextImage() {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateImage();
+            }
+        }
+
+        window.onload = getImages;
+    </script>
 
 </body>
 </html>

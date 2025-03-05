@@ -72,12 +72,15 @@
             display: block;
         }
         .gallery {
-            display: grid;
+            display: none;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin: 2rem auto;
             width: 90%;
             max-width: 1200px;
+        }
+        .gallery.active {
+            display: grid;
         }
         .gallery img {
             width: 100%;
@@ -100,7 +103,7 @@
     <div id="myMenu" class="menu">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a> <!-- ✅ FIXED GALLERY LINK -->
+        <a href="#" onclick="showSection('gallery')">Gallery</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
     </div>
@@ -111,8 +114,6 @@
         <h1>Welcome to Rustiq Handmade Art Gallery</h1>
         <p>Explore and Buy Beautiful Handcrafted Artworks</p>
     </header>
-
-
 
     <!-- About Section -->
     <div id="about" class="section active">
@@ -127,12 +128,12 @@
         <p>Contact# 03361833557 - 03316224010</p>
     </div>
     
-    <!-- Gallery Section on Home Page -->
-    <div class="gallery">
-        <img src="canvas1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
-        <img src="canvas2.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
-        <img src="pottery1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
-        <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
+    <!-- Gallery Section (Hidden by Default) -->
+    <div id="gallery" class="gallery">
+        <img src="canvas1.jpg" alt="Canvas Painting 1">
+        <img src="canvas2.jpg" alt="Canvas Painting 2">
+        <img src="pottery1.jpg" alt="Pottery Painting 1">
+        <img src="pottery2.jpg" alt="Pottery Painting 2">
     </div>
     
     <!-- Footer -->
@@ -149,9 +150,10 @@
         function closeNav() {
             document.getElementById("myMenu").style.width = "0";
         }
-
-        function openGalleryPage(imageSrc) {
-            window.location.href = `gallery.html?image=${imageSrc}`;
+        function showSection(sectionId) {
+            document.getElementById("about").classList.remove("active");
+            document.getElementById("contact").classList.remove("active");
+            document.getElementById("gallery").classList.add("active");
         }
     </script>
 </body>

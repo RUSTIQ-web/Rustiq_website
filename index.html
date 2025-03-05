@@ -100,33 +100,30 @@
     <div id="myMenu" class="menu">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="index.html">Home</a>
-        <a href="#gallery-section">Gallery</a>
+        <a href="gallery.html">Gallery</a> <!-- ✅ FIXED GALLERY LINK -->
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
     </div>
 
     <!-- Header -->
     <header>
-        <img src="rustiq .jpg" alt="Rustiq Logo">
+        <img src="rustiq.jpg" alt="Rustiq Logo">
         <h1>Welcome to Rustiq Handmade Art Gallery</h1>
         <p>Explore and Buy Beautiful Handcrafted Artworks</p>
     </header>
+
+    <!-- Gallery Section on Home Page -->
+    <div class="gallery">
+        <img src="canvas1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
+        <img src="canvas2.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
+        <img src="pottery1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
+        <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
+    </div>
 
     <!-- About Section -->
     <div id="about" class="section active">
         <h2>About Rustiq</h2>
         <p>Welcome to Rustiq! We are a passionate team dedicated to bringing art to life through handmade creations...</p>
-    </div>
-
-    <!-- Gallery Section -->
-    <div id="gallery-section" class="section">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="canvas1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
-            <img src="canvas2.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
-            <img src="pottery1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
-            <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
-        </div>
     </div>
 
     <!-- Contact Section -->
@@ -150,6 +147,7 @@
         function closeNav() {
             document.getElementById("myMenu").style.width = "0";
         }
+
         function openGalleryPage(imageSrc) {
             window.location.href = `gallery.html?image=${imageSrc}`;
         }

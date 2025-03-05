@@ -16,56 +16,72 @@
         }
         h1 {
             font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
             color: #8F7563;
-            font-size: 36px;
             margin-top: 20px;
         }
         p {
-            max-width: 800px;
+            font-size: 1.1rem;
+            width: 80%;
             margin: 0 auto 20px;
             line-height: 1.6;
         }
-        .gallery {
+        .custom-gallery {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 600px;
+            margin-top: 30px;
         }
-        .gallery img {
+        .custom-item {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding: 10px;
+        }
+        .custom-item img {
             width: 100%;
             border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .gallery img:hover {
-            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+        .custom-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .image-description {
+        .custom-item p {
+            margin-top: 10px;
             font-weight: bold;
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
+
     <h1>YOUR VISION, OUR ART</h1>
-    <p>At Rustiq, we bring your artistic dreams to life. Our custom orders allow you to personalize your pottery by providing your own design, colors, and patterns. Each piece is meticulously hand-painted using high-quality acrylics that ensure durability and a glossy finish. Whether you want a pot to match your home décor or a unique gift for someone special, we make sure to craft it with precision and care. Below are some of our customized creations:</p>
-    
-    <div class="gallery">
-        <div>
+    <p>
+        At Rustiq, we understand that every space deserves a personal touch. Our custom order service 
+        allows you to bring your unique ideas to life. Whether it's a personalized design, a special 
+        color theme, or intricate patterns, we carefully hand-paint each piece to meet your vision. 
+        Using high-quality imported acrylics, we ensure that your customized pots are durable, vibrant, 
+        and have a glossy finish that enhances their beauty. Share your design inspiration with us, and 
+        let’s create something truly special for your home or as a thoughtful gift for a loved one.
+    </p>
+
+    <h2>Some of Our Customized Creations</h2>
+
+    <div class="custom-gallery">
+        <div class="custom-item">
             <img src="custom1.jpg" alt="Customized Pot 1">
-            <p class="image-description">A beautiful floral-patterned pot customized for a modern interior.</p>
+            <p>Elegant floral hand-painted pot with golden accents.</p>
         </div>
-        <div>
+        <div class="custom-item">
             <img src="custom2.jpg" alt="Customized Pot 2">
-            <p class="image-description">Hand-painted traditional design inspired by cultural heritage.</p>
+            <p>Minimalist black-and-white modern design.</p>
         </div>
-        <div>
+        <div class="custom-item">
             <img src="custom3.jpg" alt="Customized Pot 3">
-            <p class="image-description">Minimalist art on a sleek, matte-finished pot.</p>
+            <p>Traditional patterns inspired by cultural motifs.</p>
         </div>
     </div>
+
 </body>
 </html>

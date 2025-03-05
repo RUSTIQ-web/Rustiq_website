@@ -131,42 +131,40 @@
 
 
 
-    <script>
-        let images = [];
-        let currentIndex = 0;
+<script>
+    let images = [];
+    let currentIndex = 0;
 
-        function getImages() {
-            const params = new URLSearchParams(window.location.search);
-            images = params.get('images').split(',');
-            currentIndex = parseInt(params.get('index'), 10);
+    function getImages() {
+        const params = new URLSearchParams(window.location.search);
+        images = params.get('images').split(',');
+        currentIndex = parseInt(params.get('index'), 10);
 
-            // Fix for GitHub Pages: Ensure full URL paths
-            images = images.map(img => img.startsWith('http') ? img : `https://raw.githubusercontent.com/YourUsername/YourRepo/main/${img}`);
-            
+        updateImage();
+    }
+
+    function updateImage() {
+        document.getElementById("mainImage").src = decodeURIComponent(images[currentIndex]);
+        document.getElementById("imageDescription").textContent = `Image ${currentIndex + 1} of ${images.length}`;
+    }
+
+    function prevImage() {
+        if (currentIndex > 0) {
+            currentIndex--;
             updateImage();
         }
+    }
 
-        function updateImage() {
-            document.getElementById("mainImage").src = images[currentIndex];
-            document.getElementById("imageDescription").textContent = `Image ${currentIndex + 1} of ${images.length}`;
+    function nextImage() {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateImage();
         }
+    }
 
-        function prevImage() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateImage();
-            }
-        }
+    window.onload = getImages;
+</script>
 
-        function nextImage() {
-            if (currentIndex < images.length - 1) {
-                currentIndex++;
-                updateImage();
-            }
-        }
-
-        window.onload = getImages;
-    </script>
 
 </body>
 </html>

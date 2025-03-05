@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Viewer</title>
+    <title>Rustiq Handmade Art Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@300;400&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,160 +12,165 @@
             padding: 0;
             background-color: #fff;
             color: #4D3726;
+        }
+        header, h1, h2, h3 {
+            font-family: 'Bebas Neue', cursive;
+        }
+        header {
+            background-color: #fff;
+            color: #8F7563;
             text-align: center;
+            padding: 1rem;
         }
-        .image-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80vh;
-            position: relative;
+        header img {
+            max-width: 300px;
         }
-        img {
-            max-width: 80%;
-            max-height: 80vh;
-            border-radius: 8px;
-        }
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-        .nav-button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-        .description {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #4D3726;
-            padding: 10px;
-        }
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #8F7563;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-        }
-        .back-button:hover {
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
             background-color: #4D3726;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #D9C5B2;
+            display: block;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+        .menu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .openbtn {
+            font-size: 20px;
+            background-color: #D9C5B2;
+            color: #4D3726;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin: 1rem;
+        }
+        .section {
+            display: none;
+            padding: 2rem;
+        }
+        .section.active {
+            display: block;
+        }
+        .gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4D3726;
+            color: white;
         }
     </style>
 </head>
 <body>
+    <!-- Menu Button -->
+    <button class="openbtn" onclick="openNav()">☰</button>
 
-    <div class="image-container">
-        <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
-        <img id="b&w 1.jpg" src="b&w 4.jpg.jpeg" alt="Gallery Image">
-        <img id="b&w 1.jpg" src="b&w 5.jpg.jpeg" alt="Gallery Image">
-        <img id="b&w 1.jpg" src="b&w 3.jpg" alt="Gallery Image">
-        <img id="black 1.jpg" src="black 2.jpg" alt="Gallery Image">
-        <img id="black 1.jpg" src="black 3.jpg" alt="Gallery Image">
-         <img id="multi 1.jpg" src="multi 2.jpg" alt="Gallery Image">
-        <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+    <!-- Sliding Menu -->
+    <div id="myMenu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="index.html">Home</a>
+        <a href="javascript:void(0);" onclick="showGallery()">Gallery</a> <!-- Clicking shows gallery on page -->
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </div>
-    
-    <p class="description" id="imageDescription">Image description goes here...</p>
-   <!-- Price Box -->
-<div style="display: flex; justify-content: center; margin-top: 10px;">
-    <div style="background-color: #f5e8dc; /* Light inner color */ 
-                color: #4D3726; /* Text color */
-                padding: 15px; 
-                border: 2px solid #4D3726; /* Brown outline */
-                border-radius: 8px; 
-                text-align: center; 
-                font-size: 20px; 
-                font-weight: bold; 
-                width: 150px;">
-        Price: PKR 2,500
+
+    <!-- Header -->
+    <header>
+        <img src="rustiq .jpg" alt="Rustiq Logo">
+        <h1>Welcome to Rustiq Handmade Art Gallery</h1>
+        <p>Explore and Buy Beautiful Handcrafted Artworks</p>
+    </header>
+
+    <!-- About Section -->
+    <div id="about" class="section active">
+        <h2>About Rustiq</h2>
+        <p>Welcome to Rustiq! We are a passionate team dedicated to bringing art to life through handmade creations...</p>
+        <p>Our collection features uniquely designed vases that are carefully hand-painted using the finest imported acrylics. These premium-quality paints ensure a durable, glossy finish, giving each piece an elegant and long-lasting shine. Every vase is thoughtfully decorated with intricate patterns, making it a perfect addition to your home décor. Whether displayed as a statement piece or used for floral arrangements, our vases offer a timeless charm that blends artistry with modern aesthetics.
+
+</p>
     </div>
-</div>
 
-<!-- Details Section -->
-<div style="background-color: #D9C5B2; /* Light color same as menu */
-            padding: 15px; 
-            border-radius: 8px; 
-            margin-top: 10px;">
-    <h3 style="color: #4D3726; text-align: center;">Details</h3>
-    <p>- Material: High-quality ceramic</p>
-    <p>- Hand-painted with unique designs</p>
-    <p>- Perfect for home decor</p>
-</div>
-    <!-- WhatsApp Contact Button -->
-<a href="https://wa.me/923361833557" target="_blank" style="display: inline-block; padding: 10px 15px; background-color: #4D3726; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; margin-top: 10px; display: block; text-align: center;">
-   CLICK to place order via whatsapp
-</a>
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>For orders and inquiries, feel free to reach out to us on WhatsApp. We're available to assist you with any questions about our hand-painted vases and custom designs.</p>
+    </div>
 
+    <!-- Gallery Section (Hidden Initially) -->
+    <div id="gallery" class="gallery">
+        <img src="canvas1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
+        <img src="canvas2.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
+        <img src="pottery1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
+        <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
+    </div>
 
- <a href="javascript:history.back()" class="back-button">⬅ Back to Gallery</a>
-
-<style>
-    .back-button {
-        display: inline-block;
-        padding: 10px 15px;
-        background-color: #8F7563; /* Same color as "Rustiq" on homepage */
-        color: white; /* White text for contrast */
-        text-decoration: none; /* Remove underline */
-        border-radius: 5px; /* Rounded corners */
-        font-size: 16px;
-        font-weight: bold;
-        margin: 10px 0;
-        transition: background-color 0.3s;
-    }
-    
-    .back-button:hover {
-        background-color: #4D3726; /* Darker shade on hover */
-    }
-</style>
-
-
+    <!-- Footer -->
+    <footer>
+        <p>For orders and inquiries, feel free to reach out to us on WhatsApp. We're available to assist you with any questions about our hand-painted vases and custom designs.</a></p>
+        <h3>DELIVERY INSTRUCTIONS:</h3>
+        <p>Delivery chrges included!</p>
+        <p>To ensure a smooth delivery process, we require online advance payment for all orders. This helps us process your order efficiently and guarantees a secure transaction. Once the payment is received, we will proceed with the delivery as per the agreed timeline.</p>
+    </footer>
 
     <script>
-        let images = [];
-        let currentIndex = 0;
+        function openNav() {
+        document.getElementById("myMenu").style.width = "250px";
+    }
 
-        function getImages() {
-            const params = new URLSearchParams(window.location.search);
-            images = params.get('images').split(',');
-            currentIndex = parseInt(params.get('index'), 10);
+    function closeNav() {
+        document.getElementById("myMenu").style.width = "0";
+    }
 
-            // Fix for GitHub Pages: Ensure full URL paths
-            images = images.map(img => img.startsWith('http') ? img : https://raw.githubusercontent.com/YourUsername/YourRepo/main/${img});
-            
-            updateImage();
+    // Close menu when any menu item is clicked
+    document.addEventListener("DOMContentLoaded", function() {
+        let menuLinks = document.querySelectorAll(".menu a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                closeNav(); // Closes the menu on click
+            });
+        });
+    });
+        function showGallery() {
+            // Hide other sections and show the gallery
+            document.getElementById("about").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+            document.getElementById("gallery").style.display = "grid";
         }
 
-        function updateImage() {
-            document.getElementById("mainImage").src = images[currentIndex];
-            document.getElementById("imageDescription").textContent = Image ${currentIndex + 1} of ${images.length};
+        function openGalleryPage(imageSrc) {
+            window.location.href = gallery.html?image=${imageSrc};
         }
-
-        function prevImage() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateImage();
-            }
-        }
-
-        function nextImage() {
-            if (currentIndex < images.length - 1) {
-                currentIndex++;
-                updateImage();
-            }
-        }
-
-        window.onload = getImages;
     </script>
 
 </body>

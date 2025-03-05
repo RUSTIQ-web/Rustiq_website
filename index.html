@@ -25,6 +25,53 @@
         header img {
             max-width: 300px;
         }
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #4D3726;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #D9C5B2;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+        .menu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .openbtn {
+            font-size: 20px;
+            background-color: #D9C5B2;
+            color: #4D3726;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin: 1rem;
+        }
+        .section {
+            display: none;
+            padding: 2rem;
+        }
+        .section.active {
+            display: block;
+        }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -38,35 +85,80 @@
             border-radius: 8px;
             cursor: pointer;
         }
+        .details-section {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        .details-section img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4D3726;
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <!-- Menu Button -->
+    <button class="openbtn" onclick="openNav()">☰</button>
+
+    <!-- Sliding Menu -->
+    <div id="myMenu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a onclick="showSection('home')">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a onclick="showSection('contact')">Contact us</a>
+    </div>
+
+    <!-- Header -->
     <header>
-        <img src="https://assets.onecompiler.app/42ydd42cy/42ydbg3an/rustiq%20.jpg" alt="Rustiq Logo">
+        <img src="rustiq.jpg" alt="Rustiq Logo">
         <h1>Welcome to Rustiq Handmade Art Gallery</h1>
         <p>Explore and Buy Beautiful Handcrafted Artworks</p>
     </header>
 
-    <div id="canvas" class="section">
-        <h2>Canvas Paintings</h2>
-        <div class="gallery">
-            <img src="images/canvas1.jpg" alt="Canvas Painting 1" onclick="openGallery(['images/canvas1.jpg', 'images/canvas2.jpg'], 0)">
-            <img src="images/canvas2.jpg" alt="Canvas Painting 2" onclick="openGallery(['images/canvas1.jpg', 'images/canvas2.jpg'], 1)">
-        </div>
+    <!-- Sections -->
+    <div id="home" class="section active">
+        <h2>About Rustiq</h2>
+        <p>Welcome to Rustiq!</p>
+        <p>We are a passionate team dedicated to bringing art to life through handmade creations. At Rustiq, we specialize in crafting beautiful handmade paintings, unique cushions, and customized designs on pottery of all shapes and sizes, including mud lamps and vases.</p>
+        <p>Our mission is to add a touch of elegance and personality to your spaces with artistic pieces that reflect your style. Whether you’re looking for a bespoke design for a special occasion or a stunning piece to brighten your home, we’re here to turn your vision into reality.</p>
     </div>
 
-    <div id="pottery" class="section">
-        <h2>Pottery Paintings</h2>
-        <div class="gallery">
-            <img src="images/pottery1.jpg" alt="Pottery Painting 1" onclick="openGallery(['images/pottery1.jpg', 'images/pottery2.jpg'], 0)">
-            <img src="images/pottery2.jpg" alt="Pottery Painting 2" onclick="openGallery(['images/pottery1.jpg', 'images/pottery2.jpg'], 1)">
-        </div>
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
+        <p>Contact# 03361833557 - 03316224010</p>
+        <p>"Feel free to reach out to us for any inquiries or assistance with your orders. Whether you're interested in placing a custom order or have questions about delivery, we're here to help!"</p>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact me at <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
+        <h3>DELIVERY INSTRUCTIONS:</h3>
+        <p>We currently deliver to specific areas, ensuring your handmade items reach you with care. For detailed delivery locations and arrangements, feel free to contact us. You can easily reach out through WhatsApp or email for inquiries, custom orders, or any assistance. We’re here to make the process smooth and hassle-free!</p>
+    </footer>
 
     <script>
-        function openGallery(imageArray, index) {
-            const images = encodeURIComponent(imageArray.join(','));
-            window.location.href = `gallery.html?images=${images}&index=${index}`;
+        // Open and Close Side Menu
+        function openNav() {
+            document.getElementById("myMenu").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("myMenu").style.width = "0";
+        }
+
+        // Show and Hide Sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            closeNav(); // Close menu after selection
         }
     </script>
 </body>

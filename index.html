@@ -71,6 +71,19 @@
         .section.active {
             display: block;
         }
+        .gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
         footer {
             text-align: center;
             padding: 1rem;
@@ -87,7 +100,7 @@
     <div id="myMenu" class="menu">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a> <!-- Gallery is now separate -->
+        <a href="javascript:void(0);" onclick="showGallery()">Gallery</a> <!-- Clicking shows gallery on page -->
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
     </div>
@@ -112,6 +125,14 @@
         <p>Contact# 03361833557 - 03316224010</p>
     </div>
 
+    <!-- Gallery Section (Hidden Initially) -->
+    <div id="gallery" class="gallery">
+        <img src="canvas1.jpg" alt="Canvas Painting 1" onclick="openGalleryPage('canvas1.jpg')">
+        <img src="canvas2.jpg" alt="Canvas Painting 2" onclick="openGalleryPage('canvas2.jpg')">
+        <img src="pottery1.jpg" alt="Pottery Painting 1" onclick="openGalleryPage('pottery1.jpg')">
+        <img src="pottery2.jpg" alt="Pottery Painting 2" onclick="openGalleryPage('pottery2.jpg')">
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>Contact me at <a href="mailto:wasfiagulbaz276@gmail.com">wasfiagulbaz276@gmail.com</a></p>
@@ -125,6 +146,17 @@
         }
         function closeNav() {
             document.getElementById("myMenu").style.width = "0";
+        }
+
+        function showGallery() {
+            // Hide other sections and show the gallery
+            document.getElementById("about").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+            document.getElementById("gallery").style.display = "grid";
+        }
+
+        function openGalleryPage(imageSrc) {
+            window.location.href = `gallery.html?image=${imageSrc}`;
         }
     </script>
 </body>

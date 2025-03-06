@@ -128,46 +128,73 @@
         <p>For orders and inquiries, feel free to reach out to us on WhatsApp. We're available to assist you with any questions about our hand-painted vases and custom designs.</p>
     </div>
 
-  <!-- Gallery Section (Initially Hidden) -->
+    
+    <!-- Gallery Section (Updated) -->
 <div id="gallery" class="gallery">
     <div class="gallery-item" onclick="location.href='bw.html'">
-        <img src="blacknwhite.jpg" alt="Black & White Pot 1">
+        <img src="blacknwhite.jpg" alt="Black & White Pot 1" onclick="location.href='bw.html'">
         <p class="image-name">Black & White Pot</p>
         <p class="image-price">PKR 2,500</p>
     </div>
     
     <div class="gallery-item" onclick="location.href='black.html'">
-        <img src="black2.jpg" alt="Black Pot 1">
+        <img src="black2.jpg" alt="Black Pot 1" onclick="location.href='black.html'">
         <p class="image-name">Black Pot</p>
         <p class="image-price">PKR 2,800</p>
     </div>
 
     <div class="gallery-item" onclick="location.href='multi.html'">
-        <img src="multi3.jpg" alt="Multicolor Pot 1">
+      <img src="multi3.jpg" alt="Multicolor Pot 1" onclick="location.href='multi.html'">
         <p class="image-name">Multicolor Pot</p>
         <p class="image-price">PKR 3,200</p>
     </div>
 </div>
 
 <style>
-/* Hide Gallery Initially */
+/* Gallery Styling */
 .gallery {
-    display: none; /* Hidden initially */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-/* Show Gallery */
-.gallery.show {
-    display: flex;
-    opacity: 1;
+/* Each Image Container */
+.gallery-item {
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Image Styling */
+.gallery-item img {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Highlight effect */
+    transition: 0.3s;
+}
+
+.gallery-item:hover img {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+/* Image Name */
+.image-name {
+    font-size: 14px; /* Small font */
+    font-weight: bold;
+    margin-top: 5px;
+    color: #4D3726;
+}
+
+/* Price Styling */
+.image-price {
+    font-size: 12px; /* Even smaller font for price */
+    color: #8F7563;
+    margin-top: 2px;
 }
 </style>
-
-
 
 
     <!-- Footer -->
@@ -196,17 +223,13 @@
             });
         });
     });
-       <script>
-function showGallery() {
-    // Hide all other sections
-    document.getElementById("about").style.display = "none";
-    document.getElementById("contact").style.display = "none";
+        function showGallery() {
+            // Hide other sections and show the gallery
+            document.getElementById("about").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+            document.getElementById("gallery").style.display = "grid";
+        }
 
-    // Show the gallery
-    const gallery = document.getElementById("gallery");
-    gallery.classList.add("show");
-}
-</script>
     function openGalleryPage(category) {
         let imageSets = {
             "blacknwhite.jpg": {

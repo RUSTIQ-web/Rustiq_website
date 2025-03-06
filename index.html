@@ -206,6 +206,15 @@
             window.location.href = url;
         }
     }
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.hash === "#gallery") {
+        showGallery(); // Jab #gallery hash ho toh gallery section dikhayen
+    }
+});
+
+function goToGallery() {
+    window.location.href = "index.html#gallery";
+}
 
 
     </script>

@@ -128,7 +128,8 @@
         <p>For orders and inquiries, feel free to reach out to us on WhatsApp. We're available to assist you with any questions about our hand-painted vases and custom designs.</p>
     </div>
 
-   <div id="gallery" class="gallery">
+  <!-- Gallery Section (Initially Hidden) -->
+<div id="gallery" class="gallery">
     <div class="gallery-item" onclick="location.href='bw.html'">
         <img src="blacknwhite.jpg" alt="Black & White Pot 1">
         <p class="image-name">Black & White Pot</p>
@@ -154,7 +155,6 @@
     display: none; /* Hidden initially */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
@@ -165,67 +165,20 @@
     display: flex;
     opacity: 1;
 }
-
-/* Menu Bar */
-.menu {
-    list-style: none;
-    padding: 0;
-    background: #8F7563;
-    text-align: center;
-}
-
-.menu li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px;
-}
-
-.menu a:hover {
-    color: #f7f1e3;
-}
-
-/* Gallery Item */
-.gallery-item {
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Image Styling */
-.gallery-item img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-}
-
-.gallery-item:hover img {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
-}
-
-/* Image Name */
-.image-name {
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 5px;
-    color: #4D3726;
-}
-
-/* Price */
-.image-price {
-    font-size: 12px;
-    color: #8F7563;
-    margin-top: 2px;
-}
 </style>
+
+<script>
+function showGallery() {
+    // Hide all other sections
+    document.getElementById("about").style.display = "none";
+    document.getElementById("contact").style.display = "none";
+
+    // Show the gallery
+    const gallery = document.getElementById("gallery");
+    gallery.classList.add("show");
+}
+</script>
+
 
     <!-- Footer -->
     <footer>

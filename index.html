@@ -167,17 +167,7 @@
 }
 </style>
 
-<script>
-function showGallery() {
-    // Hide all other sections
-    document.getElementById("about").style.display = "none";
-    document.getElementById("contact").style.display = "none";
 
-    // Show the gallery
-    const gallery = document.getElementById("gallery");
-    gallery.classList.add("show");
-}
-</script>
 
 
     <!-- Footer -->
@@ -206,13 +196,17 @@ function showGallery() {
             });
         });
     });
-        function showGallery() {
-            // Hide other sections and show the gallery
-            document.getElementById("about").style.display = "none";
-            document.getElementById("contact").style.display = "none";
-            document.getElementById("gallery").style.display = "grid";
-        }
+       <script>
+function showGallery() {
+    // Hide all other sections
+    document.getElementById("about").style.display = "none";
+    document.getElementById("contact").style.display = "none";
 
+    // Show the gallery
+    const gallery = document.getElementById("gallery");
+    gallery.classList.add("show");
+}
+</script>
     function openGalleryPage(category) {
         let imageSets = {
             "blacknwhite.jpg": {

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orange pot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #f7f1e3, #e8d5ba);
+            color: #4D3726;
+            margin: 0;
+            padding: 0;
+        }
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            position: relative;
+        }
+        img {
+            max-width: 80%;
+            max-height: 60vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 26px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .nav-button:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        /* Price Box - Dark Brown */
+        .price-box {
+            background: linear-gradient(135deg, #4D2E1A, #3A2112); /* Dark brown shades */
+            color: white;
+            padding: 15px 22px;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 15px auto;
+            width: 320px;
+            box-shadow: 0 6px 12px rgba(77, 46, 26, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .box {
+            background: rgba(245, 232, 220, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            margin: 10px auto;
+            width: 350px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 12px 20px;
+            background-color: #8F7563;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+        .button:hover { background-color: #4D3726; }
+        
+        /* Highlighted Order Button */
+        .highlight-button {
+            border: 3px solid #4D2E1A; /* Dark brown outline */
+            padding: 14px 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(77, 46, 26, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
+        <img id="mainImage" src="orange1.jpg" alt="orange big pot">
+        <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+    </div>
+
+    <h2>NOIRGOLD</h2>
+
+    <div class="price-box">Price: PKR 3,000</div>
+
+    <div class="details">- Material: Premium ceramic<br>- Glossy black finish<br>- Perfect for modern decor</div>
+
+    <br>
+    <a href="https://wa.me/923361833557?text=I'm%20interested%20in%20the%20Black%20&%20White%20Pot" class="button highlight-button">CLICK to place order via WhatsApp</a>
+
+    <br><a href="javascript:history.back()" class="back-button">⬅ Back to Gallery</a>
+    <style>
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #8F7563; /* Same color as "Rustiq" on homepage */
+        color: white; /* White text for contrast */
+        text-decoration: none; /* Remove underline */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0;
+        transition: background-color 0.3s;
+    }
+    
+    .back-button:hover {
+        background-color: #4D3726; /* Darker shade on hover */
+    }
+</style>
+    <script>
+        const images = ["orange1.jpg", "orange2.jpg", "orange3.jpg"];
+        let currentIndex = 0;
+        const mainImage = document.getElementById("mainImage");
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            mainImage.src = images[currentIndex];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            mainImage.src = images[currentIndex];
+        }
+    </script>
+
+</body>
+</html>

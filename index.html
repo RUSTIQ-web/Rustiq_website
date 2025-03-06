@@ -206,6 +206,12 @@
             window.location.href = url;
         }
     }
+        document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.hash === "#gallery") {
+        showGallery(); // Gallery ko show karne ka function call karna zaroori hai
+    }
+});
+
     </script>
 
 </body>

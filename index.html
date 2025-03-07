@@ -113,29 +113,21 @@
         <h1>Welcome to Rustiq Handmade Art Gallery</h1>
         <p>Explore and Buy Beautiful Handcrafted Artworks</p>
     </header>
-    <div class="video-container">
-    <video autoplay loop muted playsinline>
-        <source src="rustiqvideo.mp4" type="video/mp4">
+  <div style="position: relative; width: 100%; height: 200px; background-color: #8B5A2B; border: 10px solid #8B5A2B; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); overflow: hidden;">
+    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.2);">
+        <source src="your-video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: overlay; animation: highlight 3s infinite;"></div>
 </div>
 
 <style>
-    .video-container {
-        width: 100%;
-        height: 200px; /* Adjust height as needed */
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.8); /* Highlighting Effect */
-    }
-
-    video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+@keyframes highlight {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
 </style>
-
 
     <!-- About Section -->
     <div id="about" class="section active">
